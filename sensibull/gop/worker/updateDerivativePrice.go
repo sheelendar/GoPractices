@@ -6,16 +6,18 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gorilla/websocket"
 	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
 	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
 	"github.com/sheelendar/src/sensibull/gop/sensibull/logger"
 	UnderlyingAssetHandler "github.com/sheelendar/src/sensibull/gop/sensibull/underlyingAssetHandler"
 	"github.com/sheelendar/src/sensibull/gop/sensibull/utils"
+
+	"github.com/gorilla/websocket"
 )
 
 var webSocketConn *websocket.Conn
 
+// InitWebSocket init websocket connection and start subscribing channel.
 func InitWebSocket() *websocket.Conn {
 	var err error
 	webSocketConn, _, err = websocket.DefaultDialer.Dial(consts.WebSocketServerURL, nil)
@@ -27,6 +29,7 @@ func InitWebSocket() *websocket.Conn {
 	return webSocketConn
 }
 
+// startSubscribingDerivativeQuote start subscribing channel async way.
 func startSubscribingDerivativeQuote() {
 	var wg sync.WaitGroup
 	wg.Add(1)
@@ -36,6 +39,7 @@ func startSubscribingDerivativeQuote() {
 	wg.Wait()
 }
 
+// readQuotesFromServer read msg from server call update db with latest derivative price.
 func readQuotesFromServer(wg sync.WaitGroup) {
 	defer wg.Done()
 	for {
@@ -58,6 +62,7 @@ func readQuotesFromServer(wg sync.WaitGroup) {
 	}
 }
 
+// updateQuotePriceInDB update latest derivative price in db.
 func updateQuotePriceInDB(qsm dao.QuoteServerMessage) {
 	var tokenMap map[int]dao.SubscribedDetails
 	err := utils.GetObjectFromRedis(consts.DTUTKM, tokenMap)
@@ -81,7 +86,7 @@ func updateQuotePriceInDB(qsm dao.QuoteServerMessage) {
 	}
 }
 
-// refreshDerivativeCacheAndSubscribeNewItem to subscribe to channels or derivatives.
+// refreshDerivativeCacheAndSubscribeNewItem subscribes to channels or derivatives.
 func refreshDerivativeCacheAndSubscribeNewItem(wg sync.WaitGroup) {
 	defer wg.Done()
 

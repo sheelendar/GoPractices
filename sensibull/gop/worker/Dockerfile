@@ -4,13 +4,12 @@
 FROM golang:1.20.5-alpine
 
 # Set the working directory inside the container
-WORKDIR /worker
+WORKDIR /app
 
-COPY ./sensibull/go.mod .
-COPY ./sensibull/go.sum .
+COPY go.mod go.sum ./
 RUN go mod download
 
-COPY ./sensibull/ .
+COPY . .
 # Copy the Go application code into the container
 
 # Build the Go application

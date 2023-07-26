@@ -1,4 +1,4 @@
-version: latest
+version: '3.9'
 
 services:
   worker:
@@ -6,6 +6,14 @@ services:
     working_dir: /Go/src/sensibull/gop/sensibull/worker
     volumes:
       - .:/Go/src/sensibull/gop/sensibull/worker
+    environment:
+      - REDIS_HOST=my_redis_container
+    networks:
+        my_network:
+          aliases:
+            - redis
 
-
-
+networks:
+  my_network:
+    external:
+      name: my_network

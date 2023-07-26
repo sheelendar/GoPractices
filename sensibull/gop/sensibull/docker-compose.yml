@@ -8,18 +8,20 @@ services:
       - "19093:19093"
     volumes:
       - .:/Go/src/sensibull/gop/sensibull
-    links:
+    depends_on:
       - redis
+
+  worker:
+    build: .
+    working_dir: /Go/src/sensibull/gop/sensibull/worker
+    volumes:
+      - .:/Go/src/sensibull/gop/sensibull/worker
     depends_on:
       - redis
 
   redis:
     image: redis:latest
-    restart: always
     container_name: redis
     ports:
       - "6379:6379"
     command: [ "redis-server", "--bind", "redis", "--port", "6379" ]
-
-
-

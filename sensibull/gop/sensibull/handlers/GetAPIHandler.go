@@ -1,4 +1,3 @@
-// handlers/getAPIHandler.go
 package handlers
 
 import (

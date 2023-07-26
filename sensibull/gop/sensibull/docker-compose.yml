@@ -1,0 +1,25 @@
+version: latest
+
+services:
+  app:
+    build: .
+    working_dir: /Go/src/sensibull/gop/sensibull
+    ports:
+      - "19093:19093"
+    volumes:
+      - .:/Go/src/sensibull/gop/sensibull
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    restart: always
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: [ "redis-server", "--bind", "redis", "--port", "6379" ]
+
+
+

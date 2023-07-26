@@ -3,12 +3,13 @@ package UnderlyingAssetHandler
 import (
 	"encoding/json"
 	"fmt"
-	"gop/sensibull/consts"
-	"gop/sensibull/dao"
-	"gop/sensibull/logger"
-	"gop/sensibull/utils"
 	"net/http"
 	"time"
+
+	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/logger"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/utils"
 )
 
 // executeAPIURL call get url and return UnderlyingAsset response.

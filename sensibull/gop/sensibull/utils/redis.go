@@ -4,9 +4,10 @@ package utils
 import (
 	"encoding/json"
 	"fmt"
-	"gop/sensibull/consts"
-	"gop/sensibull/dao"
 	"time"
+
+	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
 
 	"github.com/go-redis/redis"
 )

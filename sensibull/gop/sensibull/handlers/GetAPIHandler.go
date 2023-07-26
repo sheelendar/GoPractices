@@ -3,12 +3,13 @@ package handlers
 
 import (
 	"fmt"
-	"gop/sensibull/consts"
-	"gop/sensibull/dao"
-	"gop/sensibull/logger"
-	UnderlyingAssetHandler "gop/sensibull/underlyingAssetHandler"
-	"gop/sensibull/utils"
 	"time"
+
+	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/logger"
+	UnderlyingAssetHandler "github.com/sheelendar/src/sensibull/gop/sensibull/underlyingAssetHandler"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/utils"
 )
 
 // GetUnderlyingPricesHandler return underlying detail from api or cache.

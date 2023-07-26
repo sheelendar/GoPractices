@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"gop/sensibull/consts"
-	"gop/sensibull/internal"
-	"gop/sensibull/logger"
-	"gop/sensibull/utils"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/internal"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/logger"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/utils"
 
 	"net/http"
 )

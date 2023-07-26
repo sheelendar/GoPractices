@@ -3,9 +3,10 @@ package internal
 import (
 	"encoding/json"
 	"fmt"
-	"gop/sensibull/consts"
-	"gop/sensibull/handlers"
 	"net/http"
+
+	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/sensibull/gop/sensibull/handlers"
 
 	"github.com/gorilla/mux"
 )

@@ -23,7 +23,7 @@ func InitWebSocket() *websocket.Conn {
 	webSocketConn, _, err = websocket.DefaultDialer.Dial(consts.WebSocketServerURL, nil)
 	if err != nil {
 		fmt.Println("Error connecting to WebSocket server:", err)
-		return webSocketConn
+		panic("error into socket connection please check on priority")
 	}
 	startSubscribingDerivativeQuote()
 	return webSocketConn
@@ -46,13 +46,17 @@ func readQuotesFromServer(wg sync.WaitGroup) {
 		_, message, err := webSocketConn.ReadMessage()
 		if err != nil {
 			logger.SensibullError{Message: "Error reading message check on priority" + err.Error()}.Err()
+			continue
 		}
 		logger.SensibullError{Message: "Received message from server:" + string(message)}.Info()
 		psm := dao.PingServerMessage{}
-		_ = json.Unmarshal(message, &psm)
+		err = json.Unmarshal(message, &psm)
+		if err != nil {
+			logger.SensibullError{Message: "unmarshalling error:" + err.Error()}.Info()
+			continue
+		}
 		if psm.DataType == consts.DataTypePing || psm.DataType == consts.DataTypeError {
 			fmt.Println("error: ", err)
-
 		} else {
 			qsm := dao.QuoteServerMessage{}
 			err = json.Unmarshal(message, &qsm)
@@ -97,6 +101,7 @@ func refreshDerivativeCacheAndSubscribeNewItem(wg sync.WaitGroup) {
 		for derivativeToken, v := range tokenMap {
 			if !v.IsSubscribed {
 				isNotSubscribed = true
+				v.IsSubscribed = true
 				quotes = append(quotes, derivativeToken)
 			}
 		}
@@ -119,4 +124,9 @@ func refreshDerivativeCacheAndSubscribeNewItem(wg sync.WaitGroup) {
 		}
 		time.Sleep(time.Minute)
 	}
+}
+
+// UnSubscribingDerivativeQuote need to implement to unsubscribe derivative price.
+func UnSubscribingDerivativeQuote() {
+
 }

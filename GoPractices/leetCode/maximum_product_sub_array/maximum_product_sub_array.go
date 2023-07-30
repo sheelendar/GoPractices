@@ -6,28 +6,29 @@ import (
 )
 
 func main() {
-	arr := []int{1, -2, -3, 0, 7, -8, -2}
-	fmt.Println("maximum product is", maxProductSubArray(arr, len(arr)))
+	nums := []int{-1, 0, -2}
+	fmt.Print(maxProduct(nums))
 }
 
-func maxProductSubArray(arr []int, size int) int {
+func maxProduct(nums []int) int {
+	size := len(nums)
 	max_product := -999999
 	if size <= 0 {
 		return 0
 	}
 	product := 1
 	for i := 0; i < size; i++ {
-		product = product * arr[i]
+		product = product * nums[i]
 		max_product = int(math.Max(float64(product), float64(max_product)))
-		if arr[i] == 0 {
+		if nums[i] == 0 {
 			product = 1
 		}
 	}
 	product = 1
 	for i := size - 1; i >= 0; i-- {
-		product = product * arr[i]
+		product = product * nums[i]
 		max_product = int(math.Max(float64(product), float64(max_product)))
-		if arr[i] == 0 {
+		if nums[i] == 0 {
 			product = 1
 		}
 	}

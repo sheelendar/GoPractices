@@ -8,7 +8,7 @@ import (
 /*Prompt:
 Today we’re going to build a basic spreadsheet application like Google sheets or Excel but much simpler. Our spreadsheet, let’s call it OpenSheet, will only support cells which hold either integers or formulas that sum two cells.
 
-You are tasked with writing a program that handles this functionality for OpenSheet. You can make any decisions you want regarding how this program is organized, but there must be some sort of setter/getter methods that can be called by the application for any given cell. All inputs will be strings.
+You are tasked with writing a program that handles this functionality for OpenSheet. You can make any decisions you want regarding how this program is organized, but there must be some pancake_sort of setter/getter methods that can be called by the application for any given cell. All inputs will be strings.
 
 For setting you can expect two inputs: the cell location and the cell value.
 

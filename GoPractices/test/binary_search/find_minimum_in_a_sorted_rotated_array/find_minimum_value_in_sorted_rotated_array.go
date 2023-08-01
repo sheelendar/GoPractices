@@ -10,11 +10,12 @@ func main() {
 	//num := []int{3, 4, 5, 1, 2}
 	//num := []int{2, 1}
 	//num := []int{2, 3, 4, 5, 1}
-	num := []int{4, 5, 6, 7, 0, 1, 2}
-
+	//	num := []int{4, 5, 6, 7, 0, 1, 2}
+	num := []int{7, 8, 1, 2, 3, 4, 5, 6}
 	size := len(num)
-	fmt.Println(findMinElement(num, 0, size-1))
-	fmt.Println(findMinimumElement(num, 0, size-1))
+	fmt.Print("min: ", findMinimumElement(num, 0, size-1))
+	fmt.Println()
+	fmt.Print("max: ", findMinElement(num, 0, size-1))
 }
 
 func findMinimumElement(nums []int, l int, h int) int {

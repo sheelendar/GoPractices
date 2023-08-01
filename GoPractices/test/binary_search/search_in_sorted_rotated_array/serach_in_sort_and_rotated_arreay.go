@@ -17,14 +17,18 @@ func searchInRotatedArray(arr []int64, k int64, start, end int) interface{} {
 	if k == arr[mid] {
 		return mid
 	}
-
+	// if array sorted and rotated then either (arr[start] <= arr[mid]) will true or arr[mid] <= arr[high] will be true
+	//  checking arr[start] <= arr[mid] is true then check value exits in sorted array
 	if arr[start] <= arr[mid] {
+		// check value exist in then search here.
 		if k >= arr[start] && k <= arr[mid] {
 			return searchInRotatedArray(arr, k, start, mid-1)
 		}
+		// otherwise search in unsorted part
 		return searchInRotatedArray(arr, k, mid+1, end)
-
 	}
+
+	// considering here arr[start] <= arr[mid] is false then  arr[mid] <= arr[high]  is true
 	if k >= arr[mid] && k <= arr[end] {
 		return searchInRotatedArray(arr, k, mid+1, end)
 	}

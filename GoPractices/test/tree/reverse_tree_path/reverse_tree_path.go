@@ -4,7 +4,7 @@ import "fmt"
 
 /*
 
-Given a tree and node data, the task to reverse the path to that particular Node.
+Given a find_largest_smallest_key_for_a_given_number_in_binary_search_tree and node data, the task to reverse the path to that particular Node.
 
 Examples:
 
@@ -15,7 +15,7 @@ Input:
        / \     / \
       4  3     2  1
 Data = 4
-Output: Inorder of tree
+Output: Inorder of find_largest_smallest_key_for_a_given_number_in_binary_search_tree
 7 6 3 4 2 5 1
 
 
@@ -26,7 +26,7 @@ Input:
        / \     / \
       4  3     2  1
 Data = 2
-Output : Inorder of tree
+Output : Inorder of find_largest_smallest_key_for_a_given_number_in_binary_search_tree
 4 6 3 2 7 5 1
 */
 

@@ -47,7 +47,7 @@ func (s *Stack) IsEmpty() bool {
 	return false
 }
 func main() {
-	prefix := "a+b*(c^d-e)^(f+g*h)-i"
+	prefix := "a+b*(c^d-e)^(f+data_stractures*h)-i"
 	size := len(prefix)
 	fmt.Print(convertIntoPostfix(prefix, size))
 }

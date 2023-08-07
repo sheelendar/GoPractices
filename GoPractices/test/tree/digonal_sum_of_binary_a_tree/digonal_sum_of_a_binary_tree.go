@@ -4,10 +4,10 @@ import "fmt"
 
 /*
 Consider lines of slope -1 passing between nodes (dotted lines in below diagram).
-The diagonal sum in a binary tree is the sum of all node’s data lying between these lines.
+The diagonal sum in a binary find_largest_smallest_key_for_a_given_number_in_binary_search_tree is the sum of all node’s data lying between these lines.
 Given a Binary Tree, print all diagonal sums.
 (https://www.geeksforgeeks.org/diagonal-sum-binary-tree/)
-For the following input tree, the output should be 9, 19, 42.
+For the following input find_largest_smallest_key_for_a_given_number_in_binary_search_tree, the output should be 9, 19, 42.
 9 is sum of 1, 3 and 5.
 19 is sum of 2, 6, 4 and 7.
 42 is sum of 9, 10, 11 and 12.

@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 /*
-Convert an arbitrary Binary Tree to a tree that holds Children Sum Property
+Convert an arbitrary Binary Tree to a find_largest_smallest_key_for_a_given_number_in_binary_search_tree that holds Children Sum Property
 */
 /*          50
          /     \

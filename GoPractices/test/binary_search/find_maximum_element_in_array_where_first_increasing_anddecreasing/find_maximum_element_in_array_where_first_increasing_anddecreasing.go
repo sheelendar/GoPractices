@@ -3,6 +3,7 @@ package main
 /*
 Find the maximum element in an array which is first increasing and then decreasing
 Given an array of integers which is initially increasing and then decreasing, find the maximum value in the array.
+https://www.geeksforgeeks.org/find-the-maximum-element-in-an-array-which-is-first-increasing-and-then-decreasing/
 Examples :
 
 Input: arr[] = {8, 10, 20, 80, 100, 200, 400, 500, 3, 2, 1}
@@ -42,7 +43,7 @@ func findMexElement(arr []int64, l, h int) int64 {
 		return arr[mid]
 	}
 
-	if arr[mid] > arr[mid+1] && arr[mid] < arr[mid-1] {
+	if arr[mid-1] > arr[mid] && arr[mid] > arr[mid+1] {
 		return findMexElement(arr, l, mid-1)
 	} else {
 		return findMexElement(arr, mid+1, h)

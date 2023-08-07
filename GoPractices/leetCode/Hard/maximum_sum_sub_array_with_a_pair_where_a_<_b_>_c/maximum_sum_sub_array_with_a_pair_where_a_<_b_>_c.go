@@ -8,7 +8,7 @@ func main() {
 	//arr := []int32{3, 4, 5, 1, 2, 3, 1}
 	//arr := []int32{3, 6, 1, 1, 1}
 	arr := []int32{7, 3, 4, 3, 6, 1, 1, 1} // 8
-	println("minimum of jumps", maxSumSubsequence(arr, len(arr)))
+	println("", maxSumSubsequence(arr, len(arr)))
 }
 
 func maxSumSubsequence(arr []int32, size int) int64 {

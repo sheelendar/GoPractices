@@ -5,7 +5,7 @@ import (
 )
 
 /*
-AucFind the distance between two keys in a binary tree, no parent pointers are given.
+AucFind the distance between two keys in a binary find_largest_smallest_key_for_a_given_number_in_binary_search_tree, no parent pointers are given.
 The distance between two nodes is the minimum number of edges to be traversed to reach one node from another.
 (https://www.geeksforgeeks.org/find-distance-between-two-nodes-of-a-binary-tree/)
 */

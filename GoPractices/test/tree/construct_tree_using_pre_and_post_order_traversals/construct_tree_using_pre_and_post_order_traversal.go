@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 /*
-Given two arrays that represent preorder and postorder traversals of a full binary tree, construct the binary tree.
-Full Binary Tree is a binary tree where every node has either 0 or 2 children.
+Given two arrays that represent preorder and postorder traversals of a full binary find_largest_smallest_key_for_a_given_number_in_binary_search_tree, construct the binary find_largest_smallest_key_for_a_given_number_in_binary_search_tree.
+Full Binary Tree is a binary find_largest_smallest_key_for_a_given_number_in_binary_search_tree where every node has either 0 or 2 children.
 Let us consider the two given arrays as pre[] = {1, 2, 4, 8, 9, 5, 3, 6, 7} and post[] = {8, 9, 4, 5, 2, 6, 7, 3, 1};
 (https://www.geeksforgeeks.org/full-and-complete-binary-tree-from-given-preorder-and-postorder-traversals/)
 */

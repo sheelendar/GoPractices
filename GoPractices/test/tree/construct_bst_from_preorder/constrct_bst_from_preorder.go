@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 /*
-Given the preorder traversal of a binary search tree, construct the BST.
+Given the preorder traversal of a binary search find_largest_smallest_key_for_a_given_number_in_binary_search_tree, construct the BST.
 
 Examples:
 

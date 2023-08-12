@@ -20,13 +20,13 @@ func main() {
 	//numCourses := 3
 	//prerequisites := [][]int{{1, 0}, {2, 1}, {3, 2}}
 	fmt.Print("using graph as map: ")
-	//CourseComplete1(numCourses, prerequisites)
+	//CourseCompleteUsingMap(numCourses, prerequisites)
 	fmt.Println()
 	fmt.Print("using graph as matrix: ")
-	CourseComplete2(numCourses, prerequisites)
+	CourseCompleteTwoDArrayVersion(numCourses, prerequisites)
 
 }
-func CourseComplete2(numCourses int, prerequisites [][]int) {
+func CourseCompleteTwoDArrayVersion(numCourses int, prerequisites [][]int) {
 
 	// visited to check if verdict is visited or not if visited then no
 	// need to go ahead its already solved
@@ -56,7 +56,34 @@ func CourseComplete2(numCourses int, prerequisites [][]int) {
 	}
 	fmt.Println(!isCyclic)
 }
-func CourseComplete1(numCourses int, prerequisites [][]int) {
+
+func isCycle2(node int, graph [][]int, visited []bool, isSamePath []bool) bool {
+	//  check if we got circle in same path then return as cycle true.
+	if isSamePath[node] {
+		return true
+	}
+	//  check if verdict is already visited then false as there is no cycle for this node.
+	if visited[node] {
+		return false
+	}
+	// set current verdict as visited and current path is ture if we got current again then its has cycle.
+	visited[node] = true
+	isSamePath[node] = true
+	for i := 0; i < len(graph[node]); i++ {
+
+		cycle := isCycle2(graph[node][i], graph, visited, isSamePath)
+		if cycle {
+			return true
+		}
+	}
+	// set current path as false because we traversed all path but not find the cycle to it.
+	//node can be present in other path as well.
+	isSamePath[node] = false
+
+	return false
+}
+
+func CourseCompleteUsingMap(numCourses int, prerequisites [][]int) {
 
 	visited := make([]bool, numCourses+1)
 	isSamePath := make([]bool, numCourses+1)
@@ -99,31 +126,7 @@ func isCycle(node int, graph map[int][]int, visited []bool, isSamePath []bool) b
 
 	return false
 }
-func isCycle2(node int, graph [][]int, visited []bool, isSamePath []bool) bool {
-	//  check if we got circle in same path then return as cycle true.
-	if isSamePath[node] {
-		return true
-	}
-	//  check if verdict is already visited then false as there is no cycle for this node.
-	if visited[node] {
-		return false
-	}
-	// set current verdict as visited and current path is ture if we got current again then its has cycle.
-	visited[node] = true
-	isSamePath[node] = true
-	for i := 0; i < len(graph[node]); i++ {
 
-		cycle := isCycle2(graph[node][i], graph, visited, isSamePath)
-		if cycle {
-			return true
-		}
-	}
-	// set current path as false because we traversed all path but not find the cycle to it.
-	//node can be present in other path as well.
-	isSamePath[node] = false
-
-	return false
-}
 func display(numCourses int, graph map[int][]int) {
 	for i := 0; i <= numCourses; i++ {
 		v, _ := graph[i]

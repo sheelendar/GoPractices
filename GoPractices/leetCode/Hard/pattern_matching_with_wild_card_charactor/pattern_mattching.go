@@ -61,7 +61,7 @@ func IsMatch(text string, pattern string) bool {
 	if M == 0 && N == 0 {
 		return true
 	}
-	// if pattern is fined and text is pending then there is not match
+	// if pattern is end reached to end and text is pending then there is no match
 	if M == 0 && N != 0 {
 		return false
 	}
@@ -70,7 +70,7 @@ func IsMatch(text string, pattern string) bool {
 	for i := 0; i <= N; i++ {
 		result[i] = make([]bool, M+1)
 	}
-	// base condition if there both are empty
+	// base condition if both text and pattern are empty
 	result[0][0] = true
 
 	//

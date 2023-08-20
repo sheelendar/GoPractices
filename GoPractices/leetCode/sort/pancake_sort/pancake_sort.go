@@ -18,6 +18,9 @@ output: [1, 2, 3, 4, 5] # to clarify, this is pancakeSort's output
 
 Analyze the time and space complexities of your solution.
 */
+type name struct {
+}
+
 func main() {
 	arr := []int{1, 2}
 	flip(arr, len(arr)-1)

@@ -37,6 +37,10 @@ func SpiralCopy(m [][]int) []int {
 			result = append(result, m[i][COL-1])
 		}
 		COL--
+		// need to pur this extra check when number of column is more than row need to break loop
+		if r >= ROW || c >= COL {
+			break
+		}
 		for i := COL - 1; i >= c; i-- {
 			result = append(result, m[ROW-1][i])
 		}

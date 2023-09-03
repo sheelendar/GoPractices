@@ -18,7 +18,8 @@ func maximum_sub_metrix(metrix [][]int, n, m int) {
 	colS := 0
 	colE := 0
 	maxSum := 0
-	res := make([]int, m)
+
+	var res []int
 
 	for k := 0; k < n; k++ {
 		res = make([]int, m)
@@ -60,11 +61,9 @@ func getLargestSumOfContinuesSubArray(arr []int, size int, colS, colE *int) int 
 			*colS = item + 1
 		}
 	}
-
 	if *colE != -1 {
 		return largeSum
 	}
-
 	// Special Case: When all numbers in arr[]
 	// are negative
 	largeSum = arr[0]

@@ -39,6 +39,37 @@ func countMaxSubStringLenth(s string) int {
 	return maxCount
 }
 
+func lengthOfLongestSubstring(s string) int {
+	n := len(s)
+	// base condition
+	if n == 0 {
+		return 0
+	}
+	// make a dp to track privious index
+	dp := make(map[byte]int)
+	count := 0
+	j := 0
+
+	for i := 0; i < n; i++ {
+		// if index already there then just update j with max value
+		if _, ok := dp[s[i]]; ok {
+			j = max(j, dp[s[i]]+1)
+		}
+		// put index of char each time in map
+		dp[s[i]] = i
+		// calculate count and take max with count
+		count = max(count, i-j+1)
+	}
+	return count
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 //pwwkew
 
 //a=p

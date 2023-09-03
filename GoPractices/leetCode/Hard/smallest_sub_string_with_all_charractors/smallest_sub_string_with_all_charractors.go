@@ -1,13 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	//arr := []string{"j", "e", "f", "a", "a"}
 	//str := "ahffaksfajeeubsne"   // output //aksfaje
 
-	arr := []string{"f", "h", "e", "a"}
-	str := "aaffhkksemckelloe" //output   affhkkse
+	//arr := []string{"f", "h", "e", "a"}
+	//str := "aaffhkksemckelloe" //output // affhkkse
+	arr := []string{"A", "B", "C"}
+	str := "ADOBECODEBANC"
 
 	fmt.Print(GetShortestUniqueSubstring(arr, str))
 }
@@ -43,9 +48,10 @@ func GetShortestUniqueSubstring(arr []string, str string) string {
 				result = str[start : end+1]
 			}
 			// update dp and counter
-			if dp[str[start]] > requiredChar[string(str[start])] {
+			v, ok := dp[str[start]]
+			if ok && v > requiredChar[string(str[start])] {
 				dp[str[start]]--
-			} else if dp[str[start]] == requiredChar[string(str[start])] {
+			} else if ok && v == requiredChar[string(str[start])] {
 				dp[str[start]]--
 				count--
 			}
@@ -53,4 +59,12 @@ func GetShortestUniqueSubstring(arr []string, str string) string {
 		}
 	}
 	return result
+}
+func s() {
+	S := "sere"
+	str := []byte(S)
+	sort.Slice(str, func(i, j int) bool {
+		return str[i] < str[j]
+	})
+	fmt.Println(S)
 }

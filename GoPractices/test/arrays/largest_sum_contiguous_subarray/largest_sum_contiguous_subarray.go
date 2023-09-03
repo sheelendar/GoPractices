@@ -23,3 +23,23 @@ func getLargestSumOfContinuesSubArray(arr []int64, size int) int64 {
 	}
 	return largeSum
 }
+
+// second solution.
+func maxSubArray(nums []int) int {
+	if len(nums) <= 0 {
+		return 0
+	}
+	curSum, maxSum := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		curSum = max(curSum+nums[i], nums[i])
+		maxSum = max(curSum, maxSum)
+	}
+	return maxSum
+}
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

@@ -38,13 +38,7 @@ func (s *Stack) IsEmpty() bool {
 	return false
 }
 
-func main() {
-	arr := []int{7, 1, 5, 3, 6, 4}
-
-	print("max Profit: ", maxProfit(arr))
-}
-
-func maxProfit(prices []int) int {
+func maxProfit1(prices []int) int {
 	n := len(prices)
 	if n <= 1 {
 		return 0
@@ -63,4 +57,32 @@ func maxProfit(prices []int) int {
 		max = int(math.Max(float64(max), float64(prices[i]-s.Top())))
 	}
 	return max
+}
+func main() {
+	arr := []int{7, 1, 5, 3, 6, 4}
+
+	print("max Profit: ", maxProfit(arr))
+}
+
+func maxProfit(prices []int) int {
+	n := len(prices)
+	if n <= 1 {
+		return 0
+	}
+	max := 0
+	low := prices[0]
+	for i := 1; i < n; i++ {
+		if low < prices[i] {
+			max = Max(max, prices[i]-low)
+		} else {
+			low = prices[i]
+		}
+	}
+	return max
+}
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }

@@ -4,19 +4,15 @@ import "fmt"
 
 /*
 Given an n x n square matrix, find sum of all sub-squares of size k x k where k is smaller than or equal to n.
-
 Examples :
-
 Input:
 n = 5, k = 3
 arr[][] = { {1, 1, 1, 1, 1},
-
 	   {2, 2, 2, 2, 2},
 	   {3, 3, 3, 3, 3},
 	   {4, 4, 4, 4, 4},
 	   {5, 5, 5, 5, 5},
 	};
-
 Output:
 
 	18  18  18
@@ -72,7 +68,6 @@ func printAllSumofSubMetrix(arr [][]int, n int, k int) {
 		}
 		println()
 	}
-
 	//displayMatrix(res, n)
 }
 

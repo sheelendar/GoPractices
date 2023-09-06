@@ -27,6 +27,7 @@ func main() {
 	//sum := 12
 	fmt.Println("total coin solutions : ", coinChanged(arr, len(arr), sum))
 	fmt.Println("total coin solutions from recursion: ", coinChangedRecursion(arr, len(arr), sum))
+	fmt.Println(coinChanged2(arr, len(arr), sum))
 }
 
 func coinChanged(arr []int, n, sum int) any {
@@ -63,4 +64,21 @@ func coinChangedRecursion(arr []int, n, sum int) int64 {
 	count := coinChangedRecursion(arr, n-1, sum) + coinChangedRecursion(arr, n, sum-arr[n-1])
 	table[fmt.Sprintf("%d_%d", n, sum)] = count
 	return count
+}
+
+func coinChanged2(arr []int, n, sum int) any {
+	if sum == 0 || n == 0 {
+		return 1
+	}
+	dp := make([]int, sum+1)
+	dp[0] = 1
+
+	for j := 0; j < n; j++ {
+		for i := 1; i <= sum; i++ {
+			if i >= arr[j] {
+				dp[i] = dp[i] + dp[i-arr[j]]
+			}
+		}
+	}
+	return dp[sum]
 }

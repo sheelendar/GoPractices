@@ -9,6 +9,25 @@ func main() {
 	fmt.Println(canJumpSol1(arr))
 }
 
+func canJumpSol3(nums []int) bool {
+	n := len(nums)
+	if n == 0 {
+		return true
+	}
+
+	// take as base condition
+	maxJump := 0
+	//run loop till end
+	for i := 0; i < n; i++ {
+		// check if maxJump is less than i then we are not able to each at i'th index then return false
+		if maxJump < i {
+			return false
+		}
+		maxJump = max(maxJump, i+nums[i]) // calculate new maxJump at every points.
+	}
+	return true
+}
+
 func canJumpSol2(nums []int) bool {
 	n := len(nums)
 	if n == 0 {
@@ -27,25 +46,6 @@ func canJumpSol2(nums []int) bool {
 	}
 	//we traversed all jump but not reach at the end of array then return false.
 	return false
-}
-
-func canJumpSol3(nums []int) bool {
-	n := len(nums)
-	if n == 0 {
-		return true
-	}
-
-	// take as base condition
-	maxJump := 0
-	//run loop till end
-	for i := 0; i < n; i++ {
-		// check if maxJump is less than i then we are not able to each at i'th index then return false
-		if maxJump < i {
-			return false
-		}
-		maxJump = max(maxJump, i+nums[i]) // calculate new maxJump at every points.
-	}
-	return true
 }
 
 func max(a, b int) int {

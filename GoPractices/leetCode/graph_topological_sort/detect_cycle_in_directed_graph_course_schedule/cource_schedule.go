@@ -20,7 +20,7 @@ func main() {
 	//numCourses := 3
 	//prerequisites := [][]int{{1, 0}, {2, 1}, {3, 2}}
 	fmt.Print("using graph as map: ")
-	//CourseCompleteUsingMap(numCourses, prerequisites)
+	CourseCompleteUsingMap(numCourses, prerequisites)
 	fmt.Println()
 	fmt.Print("using graph as matrix: ")
 	CourseCompleteTwoDArrayVersion(numCourses, prerequisites)

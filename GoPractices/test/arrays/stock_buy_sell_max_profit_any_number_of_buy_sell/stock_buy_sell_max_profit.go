@@ -19,6 +19,7 @@ Examples:
 func main() {
 	arr := []int{100, 180, 260, 310, 40, 535, 695}
 	fmt.Print("max profit of a share: ", maxProfitCalculate(arr, len(arr)))
+
 }
 
 func maxProfitCalculate(arr []int, n int) any {

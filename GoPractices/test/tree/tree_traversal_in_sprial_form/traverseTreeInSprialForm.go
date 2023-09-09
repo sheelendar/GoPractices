@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-type Stack struct {
+/*type Stack struct {
 	stack []*Node
 }
 
@@ -34,7 +34,7 @@ func (s *Stack) IsEmpty() bool {
 		return true
 	}
 	return false
-}
+}*/
 
 type Node struct {
 	data  int64
@@ -57,35 +57,33 @@ func displayTreeInSprilForm(n *Node) {
 	if n == nil {
 		return
 	}
-	//fmt.Print(n.data)
 	fmt.Print(" ")
-	//preOrderTraverse(n.left)
-	//preOrderTraverse(n.right)
-	s1 := Stack{}
-	s2 := Stack{}
-	s1.Push(n)
-	for !s1.IsEmpty() || !s2.IsEmpty() {
-
-		for !s1.IsEmpty() {
-			n := s1.Pop()
-			fmt.Print(n.data)
+	var s1 []*Node
+	var s2 []*Node
+	s1 = append(s1, n)
+	for len(s1) != 0 || len(s2) != 0 {
+		for len(s1) != 0 {
+			node := s1[len(s1)-1]
+			s1 = s1[:len(s1)-1]
+			fmt.Print(node.data)
 			fmt.Print(" ")
-			if n.left != nil {
-				s2.Push(n.right)
+			if node.left != nil {
+				s2 = append(s2, node.right)
 			}
-			if n.right != nil {
-				s2.Push(n.left)
+			if node.right != nil {
+				s2 = append(s2, node.left)
 			}
 		}
-		for !s2.IsEmpty() {
-			n := s2.Pop()
-			fmt.Print(n.data)
+		for len(s2) != 0 {
+			node := s2[len(s2)-1]
+			s2 = s2[:len(s2)-1]
+			fmt.Print(node.data)
 			fmt.Print(" ")
-			if n.left != nil {
-				s1.Push(n.left)
+			if node.left != nil {
+				s1 = append(s1, node.left)
 			}
-			if n.right != nil {
-				s1.Push(n.right)
+			if node.right != nil {
+				s1 = append(s1, node.right)
 			}
 		}
 	}

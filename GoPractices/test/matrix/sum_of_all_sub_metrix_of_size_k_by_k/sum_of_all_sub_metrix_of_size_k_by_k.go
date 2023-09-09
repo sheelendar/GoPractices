@@ -47,7 +47,7 @@ func printAllSumofSubMetrix(arr [][]int, n int, k int) {
 		for i := 0; i < k; i++ {
 			sum = sum + arr[i][j]
 		}
-		arr[0][j] = sum
+		res[0][j] = sum
 		for i := 1; i < n-k+1; i++ {
 			sum = sum + arr[i+k-1][j] - arr[i-1][j]
 			res[i][j] = sum
@@ -62,7 +62,7 @@ func printAllSumofSubMetrix(arr [][]int, n int, k int) {
 		print(sum)
 		print(" ")
 		for j := 1; j < n-k+1; j++ {
-			sum = res[i][j+k-1] - res[i][j-1]
+			sum = sum + res[i][j+k-1] - res[i][j-1]
 			fmt.Print(sum)
 			fmt.Print(" ")
 		}

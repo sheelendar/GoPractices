@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 /*
@@ -31,8 +30,7 @@ func printMexSizeMatrixWithOnes(M [][]int64, R int, C int) {
 	for i := 1; i < R; i++ {
 		for j := 1; j < C; j++ {
 			if M[i][j] == 1 {
-
-				S[i][j] = int64(math.Min(math.Min(float64(S[i-1][j]), float64(S[i][j-1])), float64(S[i-1][j-1]))) + 1
+				S[i][j] = Min(Min(S[i-1][j], S[i][j-1]), S[i-1][j-1]) + 1
 			} else {
 				S[i][j] = 0
 			}
@@ -42,7 +40,12 @@ func printMexSizeMatrixWithOnes(M [][]int64, R int, C int) {
 	fmt.Println()
 	displayMexMatrix(S, R, C)
 }
-
+func Min(a, b int64) int64 {
+	if a < b {
+		return a
+	}
+	return b
+}
 func displayMexMatrix(S [][]int64, R int, C int) {
 	maxi := 0
 	maxj := 0

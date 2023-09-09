@@ -39,7 +39,7 @@ func printSubArrayWithNoPairDevisibleByK(arr []int, size int, k int) {
 	for i := 0; i < size; i++ {
 
 		mod := arr[i] % k
-
+		// Removing starting elements of current subarray while there is an element in set which makes a pair with mod[i] such that the pair sum is divisible.
 		for dp[k-mod] != 0 || (dp[mod] != 0 && mod == 0) {
 			dp[arr[start]%k]--
 			start++

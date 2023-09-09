@@ -40,5 +40,4 @@ func displayLeftView(tree *Node, firstIndex *int, index int) {
 	}
 	displayLeftView(tree.left, firstIndex, index+1)
 	displayLeftView(tree.right, firstIndex, index+1)
-
 }

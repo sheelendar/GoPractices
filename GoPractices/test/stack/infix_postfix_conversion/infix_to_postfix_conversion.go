@@ -13,47 +13,14 @@ Examples:
 	Output: ABC*+D+
 */
 
-type Stack struct {
-	stack []byte
-}
-
-func (s *Stack) Push(item byte) {
-	s.stack = append(s.stack, item)
-}
-func (s *Stack) Pop() byte {
-	size := len(s.stack)
-	if size > 0 {
-		temp := s.stack[size-1]
-		s.stack = s.stack[0 : size-1]
-		if size == 1 {
-			s.stack = nil
-		}
-		return temp
-	}
-	return '-'
-}
-func (s *Stack) Top() byte {
-	size := len(s.stack)
-	if size > 0 {
-		return s.stack[size-1]
-	}
-	return '-'
-}
-func (s *Stack) IsEmpty() bool {
-	size := len(s.stack)
-	if size <= 0 {
-		return true
-	}
-	return false
-}
 func main() {
-	prefix := "a+b*(c^d-e)^(f+data_stractures*h)-i"
+	prefix := "a+b*(c^d-e)^(f+g*h)-i" // output : abcd^e-fgh*+^*+i-
 	size := len(prefix)
 	fmt.Print(convertIntoPostfix(prefix, size))
 }
 
 func convertIntoPostfix(prefix string, size int) string {
-	stack := Stack{}
+	var stack []byte
 	postfix := ""
 	for i := 0; i < size; i++ {
 		ch := prefix[i]
@@ -61,23 +28,26 @@ func convertIntoPostfix(prefix string, size int) string {
 		if isAlphaNumeric(ch) {
 			postfix = postfix + string(ch)
 		} else if ch == '(' {
-			stack.Push(ch)
+			stack = append(stack, ch)
 		} else if ch == ')' {
-			for !stack.IsEmpty() && stack.Top() != '(' {
-				op := stack.Pop()
+			for len(stack) > 0 && stack[len(stack)-1] != '(' {
+				op := stack[len(stack)-1]
+				stack = stack[:len(stack)-1]
 				postfix = postfix + string(op)
 			}
-			stack.Pop()
+			stack = stack[:len(stack)-1]
 		} else {
-			for !stack.IsEmpty() && operatorPriority(ch) <= operatorPriority(stack.Top()) {
-				op := stack.Pop()
+			for len(stack) > 0 && operatorPriority(ch) <= operatorPriority(stack[len(stack)-1]) {
+				op := stack[len(stack)-1]
+				stack = stack[:len(stack)-1]
 				postfix = postfix + string(op)
 			}
-			stack.Push(ch)
+			stack = append(stack, ch)
 		}
 	}
-	for !stack.IsEmpty() {
-		op := stack.Pop()
+	for len(stack) > 0 {
+		op := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
 		postfix = postfix + string(op)
 	}
 	return postfix

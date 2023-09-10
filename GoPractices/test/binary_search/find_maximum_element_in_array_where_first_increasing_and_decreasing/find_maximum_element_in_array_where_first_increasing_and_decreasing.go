@@ -27,7 +27,6 @@ func main() {
 }
 
 func findMexElement(arr []int64, l, h int) int64 {
-
 	if l == h {
 		return arr[l]
 	}
@@ -37,12 +36,10 @@ func findMexElement(arr []int64, l, h int) int64 {
 	if l+1 == h && arr[l] < arr[h] {
 		return arr[h]
 	}
-
 	mid := (l + h) / 2
 	if arr[mid] > arr[mid+1] && arr[mid] > arr[mid-1] {
 		return arr[mid]
 	}
-
 	if arr[mid-1] > arr[mid] && arr[mid] > arr[mid+1] {
 		return findMexElement(arr, l, mid-1)
 	} else {

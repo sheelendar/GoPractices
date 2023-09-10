@@ -13,73 +13,30 @@ Examples:(https://www.geeksforgeeks.org/the-stock-span-problem/)
 	Explanation: Traversing the given input span for 100 will be 1, 80 is smaller than 100 so the span is 1, 60 is smaller than 80 so the span is 1, 70 is greater than 60 so the span is 2 and so on. Hence the output will be 1 1 1 2 1 4 6.
 */
 
-type Stack struct {
-	stack []int64
-}
-
-func (s *Stack) Push(data int64) {
-	s.stack = append(s.stack, data)
-}
-func (s *Stack) Pop() int64 {
-	n := len(s.stack)
-	if s.stack == nil {
-		return -1
-	}
-	if n == 1 {
-		data := s.stack[n-1]
-		s.stack = nil
-		return data
-	}
-	data := s.stack[n-1]
-	s.stack = s.stack[0 : n-1]
-	return data
-
-}
-func (s *Stack) IsEmpty() bool {
-	n := len(s.stack)
-	if n <= 0 {
-		return true
-	}
-	return false
-}
-func (s *Stack) Top() int64 {
-	n := len(s.stack)
-	if n > 0 {
-		return s.stack[n-1]
-	}
-	return -1
-}
-
 func main() {
-	price := []int64{100, 80, 60, 70, 60, 75, 85}
+	price := []int64{100, 80, 60, 70, 60, 75, 85} // output {1 1 1 2 1 4 6}
+	//price := []int64{10, 4, 5, 90, 120, 80} // output: {1 1 2 4 5 1}
 	size := len(price)
-	result := make([]int, size)
-	calculateSpam(price, size, result)
+	fmt.Println(calculateSpam(price, size))
 }
-
-func calculateSpam(price []int64, size int, result []int) {
+func calculateSpam(price []int64, size int) []int {
 	if size == 0 {
-		return
+		return nil
 	}
-	for i := 0; i < size; i++ {
-		result[i] = 1
-	}
-	s := Stack{}
-	s.Push(int64(size - 1))
-
-	for i := size - 2; i >= 0; i-- {
-		if price[int(s.Top())] > price[i] {
-			s.Push(int64(i))
-		} else {
-			for !s.IsEmpty() && price[int(s.Top())] <= price[i] {
-				index := s.Pop()
-				result[index] = int(index) - i
-			}
-			s.Push(int64(i))
+	var result []int
+	result = append(result, 1)
+	var s []int
+	s = append(s, 0)
+	for i := 1; i < size; i++ {
+		for len(s) > 0 && price[s[len(s)-1]] < price[i] {
+			s = s[:len(s)-1]
 		}
+		if len(s) > 0 {
+			result = append(result, i-s[len(s)-1])
+		} else {
+			result = append(result, i+1)
+		}
+		s = append(s, i)
 	}
-	for i := 0; i < size; i++ {
-		fmt.Print(result[i])
-		fmt.Print(" ")
-	}
+	return result
 }

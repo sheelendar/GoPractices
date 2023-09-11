@@ -53,10 +53,8 @@ func IsPatternMatched(text string, pattern string, m, n int, dp map[string]bool)
 }
 
 func IsMatch(text string, pattern string) bool {
-
 	N := len(text)
 	M := len(pattern)
-
 	//  base condition if both reach to end then there is match
 	if M == 0 && N == 0 {
 		return true
@@ -66,32 +64,25 @@ func IsMatch(text string, pattern string) bool {
 		return false
 	}
 	result := make([][]bool, N+1)
-
 	for i := 0; i <= N; i++ {
 		result[i] = make([]bool, M+1)
 	}
 	// base condition if both text and pattern are empty
 	result[0][0] = true
-
-	//
 	for i := 1; i <= M; i++ {
-		result[0][i] = result[0][i-1]
+		if pattern[i-1] == '*' {
+			result[0][i] = result[0][i-1]
+		}
 	}
 	for i := 1; i <= N; i++ {
 		for j := 1; j <= M; j++ {
-
 			if pattern[j-1] == '*' {
-
 				result[i][j] = result[i][j-1] || result[i-1][j]
-
 			} else if pattern[j-1] == '.' || text[i-1] == pattern[j-1] {
-
 				result[i][j] = result[i-1][j-1]
-
 			} else {
 				result[i][j] = false
 			}
-
 		}
 	}
 	return result[N][M]

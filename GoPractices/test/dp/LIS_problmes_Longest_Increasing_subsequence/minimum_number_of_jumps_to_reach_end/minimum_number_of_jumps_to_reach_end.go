@@ -18,8 +18,8 @@ Examples:
 */
 
 func main() {
-	//arr := []int64{1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}
-	arr := []int64{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	arr := []int64{1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9}
+	//arr := []int64{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 	println("minimum of jumps", minNumberOfJumps(arr, len(arr)))
 }
 

@@ -61,14 +61,19 @@ func knapSackProblems(W int, weights []int, profits []int, n int) int {
 			} else if weights[i-1] > j {
 				dp[i][j] = dp[i-1][j]
 			} else {
-				dp[i][j] = int(math.Max(float64(profits[i-1]+dp[i-1][j-weights[i-1]]), float64(dp[i-1][j])))
+				dp[i][j] = Max(profits[i-1]+dp[i-1][j-weights[i-1]], dp[i-1][j])
 			}
 		}
 	}
 	//display(dp, n, W)
 	return dp[n][W]
 }
-
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
 func display(dp [][]int, n, W int) {
 	for i := 0; i <= n; i++ {
 		for j := 0; j < W; j++ {

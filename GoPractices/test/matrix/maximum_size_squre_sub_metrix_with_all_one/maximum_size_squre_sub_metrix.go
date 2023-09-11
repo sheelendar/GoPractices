@@ -7,6 +7,9 @@ import (
 /*
 Given a binary matrix, find out the maximum size square sub-matrix with all 1s.
 For example, consider the below binary matrix.
+
+Given a binary matrix, find out the maximum size square sub-matrix with all 1s. For example, consider the below binary matrix.
+(https://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/)
 */
 func main() {
 	M := [][]int64{{0, 1, 1, 0, 1}, {1, 1, 0, 1, 0},

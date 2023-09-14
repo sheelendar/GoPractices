@@ -2,6 +2,24 @@ package main
 
 import "fmt"
 
+/*
+Given a binary array and an integer m, find the position of zeroes flipping which creates maximum number of consecutive 1’s in array.
+Examples :
+Input:   arr[] = {1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1}
+         m = 2
+Output:  5 7
+We are allowed to flip maximum 2 zeroes. If we flip
+arr[5] and arr[7], we get 8 consecutive 1's which is
+maximum possible under given constraints
+
+Input:   arr[] = {1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1}
+         m = 1
+Output:  7
+We are allowed to flip maximum 1 zero. If we flip
+arr[7], we get 5 consecutive 1's which is maximum
+possible under given constraints.
+*/
+
 func main() {
 	arr := []int{1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1}
 	m := 2
@@ -25,7 +43,6 @@ func consecutiveOneMaxmized(arr []int, m int) {
 			right++
 		}
 		// now you have max of all one after flipped given number of zeros.
-
 		// check remaining array
 		// if maxZeros is more than m then skip current zeros and increase left.
 		if maxZeros > m {

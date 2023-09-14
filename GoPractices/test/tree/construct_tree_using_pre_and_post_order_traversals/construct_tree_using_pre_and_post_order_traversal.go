@@ -33,7 +33,7 @@ func displayTree(node *Node) {
 	displayTree(node.right)
 }
 
-func constructTreeUsingPreAndPostOrderTraversal(pre []int, post []int, low int, high int, size int, preIndex *int) *Node {
+func constructTreeUsingPreAndPostOrderTraversal(pre, post []int, low, high, size int, preIndex *int) *Node {
 	if low > high || *preIndex >= size {
 		return nil
 	}

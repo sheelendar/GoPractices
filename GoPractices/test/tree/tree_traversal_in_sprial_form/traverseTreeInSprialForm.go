@@ -67,10 +67,10 @@ func displayTreeInSprilForm(n *Node) {
 			s1 = s1[:len(s1)-1]
 			fmt.Print(node.data)
 			fmt.Print(" ")
-			if node.left != nil {
+			if node.right != nil {
 				s2 = append(s2, node.right)
 			}
-			if node.right != nil {
+			if node.left != nil {
 				s2 = append(s2, node.left)
 			}
 		}

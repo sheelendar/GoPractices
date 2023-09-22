@@ -30,7 +30,7 @@ func maxProfit(price []int, k int) int {
 		dp[0][i] = 0
 	}
 	for i := 1; i <= k; i++ { // run till k txn first loop
-		for j := 1; j < n; j++ { // run loop less than n days first loop
+		for j := 1; j < n; j++ { // run loop till the size of day array
 
 			dp[i][j] = dp[i][j-1] // put default value one day back
 			for m := 0; m <= j; m++ {

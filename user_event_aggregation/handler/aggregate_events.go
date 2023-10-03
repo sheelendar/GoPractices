@@ -20,6 +20,7 @@ func main() {
 		fmt.Println("Please provide command line agrs input file and output file names")
 		return
 	}
+	// take all args from command line and put these for further use.
 	inputFileName := args[2]
 	outputFileName := args[4]
 	if size == 6 && strings.ContainsAny(args[size-1], "update") {

@@ -24,21 +24,26 @@ func main() {
 	pre := []int{10, 5, 1, 7, 40, 50}
 	size := len(pre)
 	preIndex := 0
-	node := constructBSTFromPreorder(pre, 0, size-1, size, &preIndex)
+	//node := constructBSTFromPreorder(pre, 0, size-1, size, &preIndex)
+	node := constructBSTUsingMinAndMax(pre, -999999, 999999, size, &preIndex)
 	displayBSTInorder(node)
 
 }
 
-func displayBSTInorder(node *Node) {
-	if node == nil {
-		return
+// time complexcity of this function is O(n)
+func constructBSTUsingMinAndMax(pre []int, min int, max int, size int, preIndex *int) *Node {
+	if *preIndex >= size || min > pre[*preIndex] || pre[*preIndex] > max {
+		return nil
 	}
-	displayBSTInorder(node.left)
-	fmt.Print(node.data)
-	fmt.Print(" ")
-	displayBSTInorder(node.right)
+	node := &Node{data: pre[*preIndex]}
+	*preIndex++
+
+	node.left = constructBSTUsingMinAndMax(pre, min, node.data, size, preIndex)
+	node.right = constructBSTUsingMinAndMax(pre, node.data, max, size, preIndex)
+	return node
 }
 
+// time complexcity of this function is O(n2)
 func constructBSTFromPreorder(pre []int, low int, high int, size int, preIndex *int) *Node {
 	if *preIndex >= size || low > high {
 		return nil
@@ -59,4 +64,14 @@ func constructBSTFromPreorder(pre []int, low int, high int, size int, preIndex *
 		node.right = constructBSTFromPreorder(pre, i, high, size, preIndex)
 	}
 	return node
+}
+
+func displayBSTInorder(node *Node) {
+	if node == nil {
+		return
+	}
+	displayBSTInorder(node.left)
+	fmt.Print(node.data)
+	fmt.Print(" ")
+	displayBSTInorder(node.right)
 }

@@ -6,6 +6,7 @@ import (
 	"github.com/hpcloud/tail"
 )
 
+// processLiveLogs is used to process the live upcoming logs input file and update aggregation into output file every time.
 func processLiveLogs(inputFileName, outputFileName string) {
 	fmt.Println("Process data from live upcoming log file")
 

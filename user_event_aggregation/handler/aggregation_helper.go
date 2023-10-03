@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// updateOutputStream aggregate new input data coming from input file in aggregation map(streamOutput).
 func updateOutputStream(input *Input) {
 	milliTime := time.Unix(input.Timestamp, int64(time.Millisecond))
 	dayTime := milliTime.Format(time.DateOnly)
@@ -35,6 +36,10 @@ func updateOutputStream(input *Input) {
 	output.Date = dayTime
 	streamOutput[userKey] = output
 }
+
+// validateInputParseInputData validate input data read from input file.
+// this function can be changed based out requirement or how we read data from file
+// for simplicity we just read line by line and validate json.
 func validateInputParseInputData(text string) *Input {
 	s := strings.IndexAny(text, "{")
 	e := strings.IndexAny(text, "}")
@@ -52,6 +57,7 @@ func validateInputParseInputData(text string) *Input {
 
 }
 
+// writeDataInOutputFile read data from streamOutput and writes into output.json file.
 func writeDataInOutputFile(outputFileName string) {
 
 	f, err := os.OpenFile("../"+outputFileName, os.O_CREATE|os.O_WRONLY, 0666)
@@ -78,6 +84,7 @@ func writeDataInOutputFile(outputFileName string) {
 	}
 }
 
+// getUserKey return key for each user based on dayily basis.
 func getUserKey(userID int64, date string) string {
 	return fmt.Sprintf(USER_KEY, userID, date)
 }

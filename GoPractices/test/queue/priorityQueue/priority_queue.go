@@ -6,59 +6,41 @@ import (
 )
 
 type Item struct {
-	value    string // The value of the item; arbitrary.
-	priority int    // The priority of the item in the queue.
-	// The index is needed by update and is maintained by the heap.Interface methods.
-	index int // The index of the item in the heap.
+	value    string
+	priority int
 }
+type PriorityQueue []Item
 
-type PriorityQueue []*Item
-
-func (p PriorityQueue) Len() int {
-	return len(p)
+func (piq PriorityQueue) Len() int {
+	return len(piq)
 }
+func (piq PriorityQueue) Less(i, j int) bool {
 
-func (p PriorityQueue) Less(i, j int) bool {
-	return p[i].priority > p[j].priority
+	return piq[i].priority > piq[j].priority
 }
-
-func (pq PriorityQueue) Swap(i, j int) {
-	pq[i], pq[j] = pq[j], pq[i]
-	pq[i].index = i
-	pq[j].index = j
+func (piq PriorityQueue) Swap(i, j int) {
+	piq[i], piq[j] = piq[j], piq[i]
 }
-
-func (p *PriorityQueue) Push(x any) {
-	item := x.(*Item)
-	size := len(*p)
-	item.index = size
-	*p = append(*p, item)
+func (piq *PriorityQueue) Push(x interface{}) {
+	item := x.(Item)
+	*piq = append(*piq, item)
 }
-
-func (p *PriorityQueue) Pop() any {
-	pq := *p
-	size := len(pq)
-	item := pq[size-1]
-	item.index = -1
-	pq[size-1] = nil
-	*p = pq[0 : size-1]
+func (piq *PriorityQueue) Pop() interface{} {
+	old := *piq
+	n := len(old)
+	item := old[n-1]
+	*piq = old[0 : n-1]
 	return item
 }
-
 func main() {
-	size := 10
-	pq := make(PriorityQueue, size)
-	for i := 0; i < size; i++ {
-		pq[i] = &Item{
-			value:    fmt.Sprintf("%d", i),
-			priority: i,
-			index:    i,
-		}
-	}
-	heap.Init(&pq)
+	piq := make(PriorityQueue, 0)
 
-	for pq.Len() > 0 {
-		item := heap.Pop(&pq).(*Item)
-		fmt.Println(" Heap", item.priority, item.value)
+	heap.Init(&piq)
+	heap.Push(&piq, Item{value: "Item 1", priority: 30})
+	heap.Push(&piq, Item{value: "Item 2", priority: 10})
+	heap.Push(&piq, Item{value: "Item 3", priority: 20})
+	for piq.Len() > 0 {
+		item := heap.Pop(&piq).(Item)
+		fmt.Printf("Value: %s, Priority: %d\n", item.value, item.priority)
 	}
 }

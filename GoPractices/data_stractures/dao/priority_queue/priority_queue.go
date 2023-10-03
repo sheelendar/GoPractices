@@ -5,71 +5,46 @@ import (
 	"fmt"
 )
 
-// An Item is something we manage in a priority queue.
 type Item struct {
-	value    int // The value of the item; arbitrary.
-	priority int // The priority of the item in the queue.
-	// The index is needed by update and is maintained by the heap.Interface methods.
-	index int // The index of the item in the heap.
+	value    string
+	priority int
 }
-type PriorityQueue struct {
-	priorityQueue []*Item
-}
+type PriorityQueue []Item
 
-func (pq *PriorityQueue) Swap(i, j int) {
-	pq.priorityQueue[i], pq.priorityQueue[j] = pq.priorityQueue[j], pq.priorityQueue[i]
-	pq.priorityQueue[i].index = i
-	pq.priorityQueue[j].index = j
+func (piq PriorityQueue) Len() int {
+	return len(piq)
 }
+func (piq PriorityQueue) Less(i, j int) bool {
 
-func (pq PriorityQueue) Len() int { return len(pq.priorityQueue) }
-
-func (pq PriorityQueue) Less(i, j int) bool {
-	// We want Pop to give us the highest, not lowest, priority so we use greater than here.
-	return pq.priorityQueue[i].priority > pq.priorityQueue[j].priority
+	return piq[i].priority > piq[j].priority
 }
-func (pq *PriorityQueue) Push(data any) {
-	item := data.(*Item)
-	n := len(pq.priorityQueue)
-	item.index = n
-	pq.priorityQueue = append(pq.priorityQueue, item)
+func (piq PriorityQueue) Swap(i, j int) {
+	piq[i], piq[j] = piq[j], piq[i]
 }
-
-func (pq *PriorityQueue) Pop() any {
-	old := pq.priorityQueue
+func (piq *PriorityQueue) Push(x interface{}) {
+	item := x.(Item)
+	*piq = append(*piq, item)
+}
+func (piq *PriorityQueue) Pop() interface{} {
+	old := *piq
 	n := len(old)
-	var item *Item
-	if n == 1 {
-		item = old[n-1]
-		old[n-1] = nil // avoid memory leak
-		item.index = -1
-	} else {
-		item = old[n-1]
-		old[n-1] = nil     // avoid memory leak
-		item.index = n - 1 // for safety
-		pq.priorityQueue = old[1 : n-1]
-	}
+	item := old[n-1]
+	*piq = old[0 : n-1]
 	return item
 }
-
 func main() {
-	// Some items and their priorities.
-	items := map[int]int{
-		1: 3, 5: 10, 2: 2, 3: 4,
-	}
-	pq := &PriorityQueue{}
-	i := 0
-	for value, priority := range items {
-		pq.Push(&Item{
-			value:    value,
-			priority: priority,
-			index:    i,
-		})
-		i++
-	}
-	heap.Init(pq)
-	for i := 0; i < pq.Len(); i++ {
-		fmt.Print(pq.priorityQueue[i].priority)
-		fmt.Print(" ")
+	piq := make(PriorityQueue, 0)
+
+	piq.Push(Item{value: "Item 1", priority: 30})
+	piq.Push(Item{value: "Item 2", priority: 10})
+	piq.Push(Item{value: "Item 3", priority: 20})
+	heap.Init(&piq)
+	heap.Push(&piq, Item{value: "Item 5", priority: 50})
+	heap.Push(&piq, Item{value: "Item 6", priority: 60})
+	heap.Push(&piq, Item{value: "Item 4", priority: 0})
+
+	for piq.Len() > 0 {
+		item := heap.Pop(&piq).(Item)
+		fmt.Printf("Value: %s, Priority: %d\n", item.value, item.priority)
 	}
 }

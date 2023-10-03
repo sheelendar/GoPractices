@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// processLiveLogs is used to process the file only onece read input file data and write aggregation into output file.
 func processLogs(inputFileName, outputFileName string) {
 
 	fmt.Println("Process data from log file")

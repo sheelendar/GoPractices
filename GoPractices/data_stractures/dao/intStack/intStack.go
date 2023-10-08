@@ -1,4 +1,4 @@
-package intStack
+package main
 
 type Stack struct {
 	stack []int64

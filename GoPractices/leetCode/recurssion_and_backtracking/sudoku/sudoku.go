@@ -24,7 +24,18 @@ Example (more examples can be found here):
 //https://www.pramp.com/challenge/O5PGrqGEyKtq9wpgw6XP
 
 func main() {
-	board := [][]string{
+
+	b := [][]byte{{'8', '3', '.', '.', '7', '.', '.', '.', '.'},
+		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+		{'.', '.', '.', '.', '8', '.', '.', '7', '9'}}
+
+	/*board := [][]string{
 		{".", ".", ".", "7", ".", ".", "3", ".", "1"},
 		{"3", ".", ".", "9", ".", ".", ".", ".", "."},
 		{".", "4", ".", "3", "1", ".", "2", ".", "."},
@@ -35,7 +46,8 @@ func main() {
 		{".", ".", ".", ".", ".", "9", ".", ".", "8"},
 		{"8", ".", "5", ".", ".", "4", ".", ".", "."}}
 
-	fmt.Println(SudokuSolve(board))
+	fmt.Println(SudokuSolve(board))*/
+	fmt.Print(isValidSudoku(b))
 }
 
 func SudokuSolve(board [][]string) bool {
@@ -110,6 +122,62 @@ func isValid(board [][]string, row, col, size int, ch string) bool {
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
 			if board[x+i][y+j] == ch {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+func isValidSudoku(board [][]byte) bool {
+	size := len(board)
+	return isValidate(board, 0, 0, size)
+}
+
+func isValidate(board [][]byte, row, col, size int) bool {
+	if row >= size {
+		return true
+	}
+	newRow := row
+	newCol := col
+	if col == size-1 {
+		newRow++
+		newCol = 0
+	} else {
+		newCol++
+	}
+	if board[row][col] != '.' {
+		return isValidate(board, newRow, newCol, size)
+	}
+	for i := byte(1); i <= byte(9); i++ {
+		if check(board, i, row, col, size) {
+			board[row][col] = i
+			res := isValidate(board, newRow, newCol, size)
+			if res {
+				return res
+			}
+			board[row][col] = '.'
+		}
+	}
+	return false
+}
+
+func check(board [][]byte, num byte, row, col, size int) bool {
+	for i := 0; i < size; i++ {
+		if board[row][i] == num {
+			return false
+		}
+	}
+	for i := 0; i < size; i++ {
+		if board[i][col] == num {
+			return false
+		}
+	}
+	row = (row / 3) * 3
+	col = (col / 3) * 3
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if board[i+row][j+col] == num {
 				return false
 			}
 		}

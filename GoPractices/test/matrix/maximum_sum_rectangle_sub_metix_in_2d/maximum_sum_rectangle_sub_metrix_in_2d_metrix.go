@@ -2,6 +2,20 @@ package main
 
 import "fmt"
 
+/*
+Given a 2D array, find the maximum sum submatrix in it. For example, in the following 2D array,
+the maximum sum submatrix is highlighted with blue rectangle and sum of all elements in this submatrix is 29.
+https://www.geeksforgeeks.org/maximum-sum-rectangle-in-a-2d-matrix-dp-27/
+
+	{ { 1, 2, -1, -4, -20 },
+	  { -8, -3, 4, 2, 1 },
+	  { 3, 8, 10, 1, 3 },
+	  { -4, -1, 1, 7, -6 } };
+
+Solution: (Top, Left) (1, 1)
+(Bottom, Right) (3, 3)
+Max sum is: 29
+*/
 func main() {
 	metrix := [][]int{{1, 2, -1, -4, -20},
 		{-8, -3, 4, 2, 1},

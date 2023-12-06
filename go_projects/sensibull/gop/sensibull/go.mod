@@ -1,4 +1,4 @@
-module github.com/sheelendar/src/sensibull/gop/sensibull
+module github.com/sheelendar/src/go_projects/sensibull/gop/sensibull
 
 go 1.20
 

@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
-	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/dao"
 
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"

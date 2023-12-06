@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
-	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
-	"github.com/sheelendar/src/sensibull/gop/sensibull/logger"
-	UnderlyingAssetHandler "github.com/sheelendar/src/sensibull/gop/sensibull/underlyingAssetHandler"
-	"github.com/sheelendar/src/sensibull/gop/sensibull/utils"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/dao"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/logger"
+	UnderlyingAssetHandler "github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/underlyingAssetHandler"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/utils"
 )
 
 // GetUnderlyingPricesHandler return underlying detail from api or cache.

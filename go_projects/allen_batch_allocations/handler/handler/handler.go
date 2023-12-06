@@ -2,10 +2,11 @@ package handler
 
 import (
 	"fmt"
-	"github.com/sheelendar/src/allen_batch_allocations/data_storage"
-	"github.com/sheelendar/src/allen_batch_allocations/dto"
-	"github.com/sheelendar/src/allen_batch_allocations/utils"
 	"sort"
+
+	"github.com/sheelendar/src/go_projects/allen_batch_allocations/data_storage"
+	"github.com/sheelendar/src/go_projects/allen_batch_allocations/dto"
+	"github.com/sheelendar/src/go_projects/allen_batch_allocations/utils"
 )
 
 func Register(name, gender, roll string) {

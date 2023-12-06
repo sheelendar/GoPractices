@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
-	"github.com/sheelendar/src/sensibull/gop/sensibull/dao"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/dao"
 
 	"github.com/go-redis/redis"
 )

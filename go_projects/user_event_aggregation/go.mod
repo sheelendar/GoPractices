@@ -1,4 +1,4 @@
-module github.com/sheelendar/src/user_event_aggregation
+module github.com/sheelendar/src/go_orojects/user_event_aggregation
 
 go 1.20
 

@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/sheelendar/src/allen_batch_allocations/data_storage"
-	"github.com/sheelendar/src/allen_batch_allocations/handler/handler"
-	"github.com/sheelendar/src/allen_batch_allocations/utils"
+
+	"github.com/sheelendar/src/go_projects/allen_batch_allocations/data_storage"
+	"github.com/sheelendar/src/go_projects/allen_batch_allocations/handler/handler"
+	"github.com/sheelendar/src/go_projects/allen_batch_allocations/utils"
 )
 
 func main() {

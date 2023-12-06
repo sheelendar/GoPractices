@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
-	"github.com/sheelendar/src/sensibull/gop/sensibull/handlers"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/handlers"
 
 	"github.com/gorilla/mux"
 )

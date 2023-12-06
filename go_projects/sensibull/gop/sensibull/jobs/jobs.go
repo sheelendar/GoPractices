@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/sheelendar/src/sensibull/gop/sensibull/consts"
+	"github.com/sheelendar/src/go_projects/sensibull/gop/sensibull/consts"
 )
 
 var jobQueue chan SubscribeJob

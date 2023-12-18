@@ -43,8 +43,8 @@ func findOrderOfLetters(dict []string, N, K int) {
 	visited := make(map[byte]bool)
 	var stack []byte
 	// call dfs as topological sort and collect output into stack to print correct order.
-	for k, _ := range rela {
-		DFS(k, rela, &stack, visited)
+	for node, _ := range rela {
+		DFS(node, rela, &stack, visited)
 	}
 	//displayRelation(rela)
 	fmt.Println()

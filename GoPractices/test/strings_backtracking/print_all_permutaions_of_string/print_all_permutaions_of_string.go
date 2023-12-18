@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
@@ -28,10 +27,4 @@ func swapValues(str string, l int, i int) string {
 	stringArr[l] = stringArr[i]
 	stringArr[i] = temp
 	return string(stringArr)
-}
-
-func dd() {
-	strings.Contains("", "substr")
-	strings.LastIndex()
-	strings.I
 }

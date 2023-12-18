@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+/*
+ */
 func main() {
 
 	//grid := [][]int{{0, 1}, {1, 0}}

@@ -4,13 +4,19 @@ import "fmt"
 
 /*
 https://leetcode.com/problems/grumpy-bookstore-owner/description/
-There is a bookstore owner that has a store open for n minutes. Every minute, some number of customers enter the store. You are given an integer array customers of length n where customers[i] is the number of the customer that enters the store at the start of the ith minute and all those customers leave after the end of that minute.
+There is a bookstore owner that has a store open for n minutes. Every minute, some number of customers enter the store.
 
-On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where grumpy[i] is 1 if the bookstore owner is grumpy during the ith minute, and is 0 otherwise.
+	You are given an integer array customers of length n where customers[i] is the number of the customer that enters the store
+	 at the start of the ith minute and all those customers leave after the end of that minute.
+
+On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where grumpy[i]
+is 1 if the bookstore owner is grumpy during the ith minute, and is 0 otherwise.
 
 When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.
 
-The bookstore owner knows a secret technique to keep themselves not grumpy for minutes consecutive minutes, but can only use it once.
+The bookstore owner knows a secret technique to keep themselves not grumpy for minutes consecutive minutes,
+
+	but can only use it once.
 
 Return the maximum number of customers that can be satisfied throughout the day.
 
@@ -40,11 +46,11 @@ func maxSatisfied(cus []int, g []int, minutes int) int {
 	}
 	max := 0
 	sum := 0
-	for i := 0; i < n; i++ {
+	for i := 0; i < n; i++ { // sliding window find out max sum when owner is grumpy with in window of given minutes
 		if g[i] == 1 {
-			sum = sum + cus[i]
+			sum = sum + cus[i] // add customer for given minutes period
 		}
-		if i >= minutes && g[i-minutes] == 1 {
+		if i >= minutes && g[i-minutes] == 1 { // remove last added customers at index (i-minutes) and calculate sum
 			sum = sum - cus[i-minutes]
 		}
 		if max < sum {
@@ -52,6 +58,7 @@ func maxSatisfied(cus []int, g []int, minutes int) int {
 		}
 	}
 	sum = 0
+	// added all element when owner is not grumpy.
 	for i := 0; i < n; i++ {
 		if g[i] == 0 {
 			sum = sum + cus[i]

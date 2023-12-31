@@ -40,3 +40,71 @@ func main() {
 	game := GameConstractor()
 	game.startGame()
 }
+
+/*
+// output
+
+
+ ----  ----  ---- 3-86  ----  ----  ----  ---- 8-80  ----
+ ----  ----  ----  ----  ---- 15-8  ----  ----  ----  ----
+ ----  ----  ----  ----  ----  ---- 26-85  ----  ----  ----
+ ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+ ----  ----  ----  ----  ----  ----  ----  ----  ---- 49-27
+ ----  ----  ----  ----  ---- 55-33  ----  ----  ----  ----
+ ----  ---- 62-90  ----  ----  ----  ----  ----  ----  ----
+ ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+ ----  ----  ----  ----  ----  ----  ----  ----  ---- 89-86
+ ----  ---- 92-28  ----  ----  ----  ----  ----  ----  ----
+player turn  shee  current Position  0
+player turn  shee  new Position  1
+player turn  ram  current Position  0
+player turn  ram  new Position  6
+player turn  shee  current Position  1
+player turn  shee  new Position  5
+player turn  ram  current Position  6
+player turn  ram  new Position  12
+player turn  shee  current Position  5
+player turn  shee  new Position  7
+player turn  ram  current Position  12
+player turn  ram  new Position  8
+player turn  shee  current Position  7
+player turn  shee  new Position  10
+player turn  ram  current Position  8
+player turn  ram  new Position  14
+player turn  shee  current Position  10
+player turn  shee  new Position  16
+player turn  ram  current Position  14
+player turn  ram  new Position  18
+player turn  shee  current Position  16
+player turn  shee  new Position  17
+player turn  ram  current Position  18
+player turn  ram  new Position  20
+player turn  shee  current Position  17
+player turn  shee  new Position  23
+player turn  ram  current Position  20
+player turn  ram  new Position  85
+player turn  shee  current Position  23
+player turn  shee  new Position  85
+player turn  ram  current Position  85
+player turn  ram  new Position  86
+player turn  shee  current Position  85
+player turn  shee  new Position  86
+player turn  ram  current Position  86
+player turn  ram  new Position  87
+player turn  shee  current Position  86
+player turn  shee  new Position  91
+player turn  ram  current Position  87
+player turn  ram  new Position  91
+player turn  shee  current Position  91
+player turn  shee  new Position  93
+player turn  ram  current Position  91
+player turn  ram  new Position  94
+player turn  shee  current Position  93
+player turn  shee  new Position  98
+player turn  ram  current Position  94
+player turn  ram  new Position  95
+player turn  shee  current Position  98
+player turn  shee  new Position  103
+winnner player  shee Position  103
+
+*/

@@ -42,7 +42,7 @@ ans:  -1
 After this operation, memory = [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1] .
 ans: 2 free memory spaces
 
-• [0, 2] corresponds to alloc 2, which allocates a memory block from units 8 to 10, as.
+• [0, 3] corresponds to alloc 2, which allocates a memory block from units 8 to 10, as.
 After this operation, memory = [1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1] .
 ID = 3 is also assigned to this segment.
 ans:=8
@@ -50,9 +50,15 @@ ans:=8
 • [1, 4] corresponds to erase 4 ID, which means need to remove memory with ID 4 there is not ID with 4.
 ans: -1
 
-• • [0, 4] corresponds to alloc 4, there is not empty memory block .
+• [0, 4] corresponds to alloc 4, there is not empty memory block .
 ans:  -1
 */
 func main() {
+	memory := []int{0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1}
+	queries := [][]int{{0, 2}, {0, 1}, {0, 1}, {1, 1}, {0, 3}, {1, 4}, {0, 4}}
+	executeQueue(memory, queries)
+}
+
+func executeQueue(memory []int, queries [][]int) []int {
 
 }

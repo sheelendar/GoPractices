@@ -2,7 +2,8 @@ package main
 
 const (
 	// External api constants
-	GetHelloURL = "/hello"
+	GetHelloURL  = "/hello"
+	PostHelloURL = "/hello_post"
 
 	//server constants
 	HostAndPort = ":8080"

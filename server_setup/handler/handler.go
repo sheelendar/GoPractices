@@ -6,6 +6,6 @@ import (
 
 func main() {
 	fmt.Println("hello")
-	//InitHttpClient()
+	InitHttpClient()
 	//ExecuteGetUrl(GetAssetURL)
 }

@@ -60,5 +60,5 @@ func main() {
 }
 
 func executeQueue(memory []int, queries [][]int) []int {
-
+	return []int{}
 }

@@ -1,4 +1,4 @@
-module github.com/sheelendar/src/GoPractices
+module github.com/sheelendar/GoPractices
 
 go 1.20
 

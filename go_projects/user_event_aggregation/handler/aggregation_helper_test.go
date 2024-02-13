@@ -1,10 +1,6 @@
 package main
 
-import (
-	"testing"
-
-	"github.com/stretchr/testify/assert"
-)
+import "testing"
 
 // This is unit test case file we write unit test case for each function to cover every step.
 func Test_updateOutputStream(t *testing.T) {

@@ -1,5 +1,56 @@
 package main
 
+/*
+    Users' Abilities:
+        Students can sign up.
+        Admins can sign up.
+        Admins can create groups.
+        Students can join a specific group.
+        A student can only join one group (like IIT or NEET) once.
+        Admins can assign students to groups based on different factors.
+            Gender: Female students are assigned first to available morning, then noon, then evening slots.
+            Capacity: Assign to groups with the most space first.
+
+    Input and Output:
+        Inputs for actions should be done through methods.
+        Method signature should contain enough info for all needs.
+        You can change how inputs and outputs are formatted without changing how it works.
+
+		Sample Examples
+			● register(“Akhilesh”, Male, Student) - Student1
+			● register(“Komal”, Female, Student) - Student2
+			● register(“Rajnish”, Male,Student) - Student3
+			● register(“Mayuri”, Female,Student) - Student4
+			● enroll(Student1, Stream : IIT)
+			● enroll(Student2, Stream: IIT )
+			● enroll(Student3, Stream: NEET )
+			● enroll(Student4, Stream: IIT)
+			● register(“Kamesh”, Male , Admin) - Admin1
+			● register(“M”, Male, Admin) - Admin2
+			● createBatch(Admin1, Capacity=3, Stream : IIT, Timing : Morning) - B1
+			○ Capacity of the batch is the max number of students which can be allocated to this batch
+			● createBatch(Admin1, Capacity=2, Stream: NEET, Timing: Evening) - B2
+			● createBatch(Admin1, Capacity=3, Stream : IIT, Timing : Evening) - B3
+
+	Guidelines:
+        Write a driver class for demonstration purposes.
+        Output can be written to the console.
+        Store all data in memory.
+        Use any programming language you prefer.
+        Don't create a user interface.
+        Save your code with your name and email it. It will be executed on another machine, so specify any dependencies in your email.
+
+    Expectations:
+        Your code should be demonstrable and functionally correct.
+        It should handle edge cases well and handle errors gracefully with appropriate exception handling.
+        It should have a good object-oriented design.
+        Code should be readable, modular, testable, and extensible.
+        Use clear and intuitive names for variables, methods, and classes.
+        Make it easy to add or remove functionality without rewriting large portions of the code.
+        Avoid writing overly long or complex code.
+        Don't use databases; store data in memory.
+
+*/
 import (
 	"fmt"
 

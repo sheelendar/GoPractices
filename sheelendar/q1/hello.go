@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 const GetUserURL = "https://jsonplaceholder.typicode.com/users"
@@ -60,4 +61,8 @@ func userFetchDetailsHandler(url string) {
 		fmt.Println("Add:  ", user.Address)
 		fmt.Println()
 	}
+
+	s := "sheelendar"
+	newS := strings.Replace(s, "s", "", 1)
+	fmt.Println(newS)
 }

@@ -3,18 +3,16 @@ package main
 import (
 	"encoding/json"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
-var muxRouter *mux.Router
+//var muxRouter mux.Router
 
 func init() {
-	muxRouter = mux.NewRouter
+	//muxRouter = mux.NewRoute
 }
 func StartHTTPServer() {
-	muxRouter.HandleFunc("hello", GetHelloHandler).Methods("GET")
-	http.Handle("/", muxRouter)
+	//muxRouter.HandleFunc("hello", GetHelloHandler).Methods("GET")
+	//http.Handle("/", muxRouter)
 	http.ListenAndServe(":8080", nil)
 }
 func GetHelloHandler(res http.ResponseWriter, req *http.Request) {

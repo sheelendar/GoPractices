@@ -1,4 +1,4 @@
-module github.com/sheelendar/src/go_projects
+module github.com/sheelendar/src/company
 
 go 1.20
 

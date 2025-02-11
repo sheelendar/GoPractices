@@ -9,11 +9,5 @@ func GetInvoiceDao(invoice Invoice) InvoiceDao {
 }
 
 func (InvoiceDao InvoiceDao) SaveInvoice() {
-	//if {
-	//save invoce into file
-	//}
 
-	//else{
-	// save Invoce into db
-	//}
 }

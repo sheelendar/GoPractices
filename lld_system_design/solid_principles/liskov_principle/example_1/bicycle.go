@@ -9,7 +9,7 @@ func GetBiCycle(speed int) *BiCycle {
 }
 
 func (moterCycle *BiCycle) TurnOnEngine() {
-	panic("there is not engine")
+	panic("there is no engine")
 }
 
 func (moterCycle *BiCycle) Accelerate() {
